@@ -8,3 +8,6 @@ def BigFunction():
 class A:
 	def good_func(self):
 		pass
+	
+	def Bad_func(self):
+		pass
