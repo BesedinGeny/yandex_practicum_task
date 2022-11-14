@@ -1,10 +1,14 @@
-import ast
-import sys
-import checkers
+from checkers import *
+from common.entry_point import EntryPoint
 from name_validotors import *
 
+
 if __name__ == "__main__":
-	print(sys.argv)
-	with open("test_docs/test1.py") as code_file:
-		code = code_file.read()
-		print(checkers.UpperChecker(ast.parse(code), ExternalNameValidator, InternalNameValidator).check())
+	resources = dict(
+		external_checker=ExternalChecker,
+		external_name_validator=ExternalNameValidator,
+		internal_name_validator=InternalNameValidator
+	)
+	main_service = EntryPoint(**resources)
+	doc_path = main_service.get_arguments()
+	print(main_service(doc_path))

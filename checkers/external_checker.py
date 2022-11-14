@@ -1,13 +1,12 @@
-import ast
-from _ast import AST, FunctionDef, ClassDef
+from _ast import FunctionDef, ClassDef
 from typing import Any, Callable, Type
 
 from checkers.base import BaseChecker
-from checkers.lower_checker import LowerChecker
+from checkers.internal_checker import InternalChecker
 from name_validotors.base_validator import BaseNameValidator
 
 
-class UpperChecker(BaseChecker):
+class ExternalChecker(BaseChecker):
 	"""Класс для проверки объекта вне класса"""
 	
 	def __init__(
@@ -41,11 +40,11 @@ class UpperChecker(BaseChecker):
 			return False
 	
 	def _class_def_case(self, element: Any) -> bool:
-		checker = LowerChecker(element, self._internal_name_validator)
+		checker = InternalChecker(element, self._internal_name_validator)
 		return checker.check()
 		
 	def _regular_check_case(self, element: Any) -> bool:
-		current_element_checker = UpperChecker(
+		current_element_checker = ExternalChecker(
 			element,
 			self._name_validator,
 			self._internal_name_validator

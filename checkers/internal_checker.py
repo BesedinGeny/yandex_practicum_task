@@ -2,7 +2,7 @@ from checkers.base import BaseChecker
 from _ast import FunctionDef
 
 
-class LowerChecker(BaseChecker):
+class InternalChecker(BaseChecker):
 	def check(self) -> bool:
 		for element in self._iter_inner_items():
 			name_result = True
@@ -19,5 +19,5 @@ class LowerChecker(BaseChecker):
 		return True
 	
 	def _continuous_check(self, element) -> bool:
-		checker = LowerChecker(element, self._name_validator)
+		checker = InternalChecker(element, self._name_validator)
 		return checker.check()

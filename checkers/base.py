@@ -9,7 +9,12 @@ class BaseChecker:
 	_current_object: Union[FunctionDef, Module, None] = None
 	_name_validator: Optional[Type[BaseNameValidator]] = None
 	
-	def __init__(self, current_object: Any, name_validator: Type[BaseNameValidator]):
+	def __init__(
+			self,
+			current_object: Any,
+			name_validator: Type[BaseNameValidator],
+			*args,
+	):
 		"""current_object - любой элемент AST"""
 		self._current_object = current_object
 		self._name_validator = name_validator
