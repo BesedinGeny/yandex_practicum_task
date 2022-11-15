@@ -5,11 +5,14 @@ from common.entry_point import EntryPoint
 from name_validotors import ExternalNameValidator, InternalNameValidator
 
 test_input_params = [
-	("docs/test1.py", True),
-	("docs/test2.py", False),
-	("docs/test3.py", False),
-	("docs/test4.py", True),
-	("docs/test5.py", False),
+	("docs/test1.py", True),  # проверка базового алгоритма
+	("docs/test2.py", False),  # проверка базового алгоритма
+	("docs/test3.py", False),  # объявление функции внутри if-a
+	("docs/test4.py", True),  # пример из ТЗ
+	("docs/test5.py", False),  # пример из ТЗ
+	("docs/test6.py", False),  # некорректный python-код
+	("docs/test7.py", True),  # объявление функции внутри for-a
+	("docs/test8.py", False),  # большая вложенность
 ]
 
 
